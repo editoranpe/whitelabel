@@ -20,7 +20,8 @@
     "check:template": "npm run check && npm run test:white-label && npm run test:cloudflare-config && node ./scripts/check-isolation.mjs",
     "test:white-label": "node --experimental-strip-types --test tests/white-label.test.ts",
     "prebuild": "node scripts/prepare-cloudflare.mjs",
-    "test:cloudflare-config": "node --experimental-strip-types --test tests/cloudflare-config.test.ts"
+    "test:cloudflare-config": "node --experimental-strip-types --test tests/cloudflare-config.test.ts",
+    "smoke:cloudflare": "node scripts/verify-deployment.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",
