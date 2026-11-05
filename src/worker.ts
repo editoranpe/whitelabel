@@ -20,7 +20,7 @@ export default {
   async fetch(request: Request, env: WorkerEnv): Promise<Response> {
     const path = new URL(request.url).pathname;
     if (path === '/api/version') {
-      return new Response(JSON.stringify({ release: 'npe-white-label-2026-11', runtime: 'cloudflare-worker', features: ['visual_builder', 'monthly_recurring', 'csv_import', 'pix_notices', 'webp_upload_d1'], site_version: '2026-11-05-npe-template-v1', auth_release: 'workers-pbkdf2-100k-fix', editor_release: 'npe-white-label-v1' }), {
+      return new Response(JSON.stringify({ release: 'npe-white-label-2026-11', runtime: 'cloudflare-worker', features: ['visual_builder', 'monthly_recurring', 'csv_import', 'pix_notices', 'webp_upload_d1'], site_version: '2026-11-05-npe-template-v1', auth_release: 'workers-pbkdf2-100k-fix', editor_release: 'npe-white-label-v1', deployment: { d1_bound: !!env.DB?.prepare, setup_token_ready: !!env.SETUP_TOKEN && env.SETUP_TOKEN.length >= 24 } }), {
         headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' },
       });
     }
