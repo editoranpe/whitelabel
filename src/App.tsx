@@ -11,8 +11,8 @@ function PortalEntry({activate = false}:{activate?:boolean}) {
   const [query] = useSearchParams();
   const nav = useNavigate();
   const [form,setForm] = useState({name:'',email:'',password:'',setup_token:'',token:query.get('token') || ''});
-  const [setup,setSetup] = useState(false),[busy,setBusy]=useState(false),[show,setShow]=useState(false),[error,setError]=useState('');
-  useEffect(()=>{ if(!activate) api<{setup_required:boolean}>('setup-status').then(x=>setSetup(x.setup_required)).catch(()=>{}); },[activate]);
+  const [setup,setSetup] = useState(false),[setupTokenReady,setSetupTokenReady]=useState(true),[checking,setChecking]=useState(!activate),[busy,setBusy]=useState(false),[show,setShow]=useState(false),[error,setError]=useState('');
+  useEffect(()=>{ if(!activate) api<{setup_required:boolean;setup_token_ready:boolean}>('setup-status').then(x=>{setSetup(x.setup_required);setSetupTokenReady(x.setup_token_ready);}).catch(e=>setError('Não foi possível acessar as configurações do servidor: '+(e as Error).message)).finally(()=>setChecking(false)); },[activate]);
   const submit = async (event:React.FormEvent)=>{
     event.preventDefault();setError('');setBusy(true);
     try {
@@ -28,8 +28,9 @@ function PortalEntry({activate = false}:{activate?:boolean}) {
         {activate&&<label>Token do convite<input required placeholder="Código do seu convite" value={form.token} onChange={e=>setForm({...form,token:e.target.value})}/></label>}
         <label>Senha<div className="password-field"><input required type={show?'text':'password'} minLength={setup||activate?12:1} autoComplete={setup||activate?'new-password':'current-password'} placeholder={setup||activate?'Crie uma senha de 12 caracteres ou mais':'Sua senha'} value={form.password} onChange={e=>setForm({...form,password:e.target.value})}/><button type="button" onClick={()=>setShow(!show)} aria-label={show?'Ocultar senha':'Mostrar senha'}>{show?<EyeOff size={17}/>:<Eye size={17}/>}</button></div></label>
         {setup&&<label>Segredo de inicialização (SETUP_TOKEN)<input required type="password" autoComplete="off" placeholder="Configurado no Cloudflare" value={form.setup_token} onChange={e=>setForm({...form,setup_token:e.target.value})}/></label>}
+        {setup&&!setupTokenReady&&<div className="inline-error" role="status">O segredo SETUP_TOKEN ainda não foi configurado no Worker. Abra Cloudflare → Worker → Settings → Variables and Secrets e adicione um <strong>Secret</strong> de pelo menos 24 caracteres. Depois atualize esta página.</div>}
         {error&&<div className={error.startsWith('Administrador criado')?'inline-success':'inline-error'} role="alert">{error}</div>}
-        <button type="submit" className="button button-primary auth-submit" disabled={busy}>{busy?'Aguarde...':activate?'Ativar minha conta':setup?'Criar administrador':'Entrar no painel'} <ArrowRight size={18}/></button>
+        <button type="submit" className="button button-primary auth-submit" disabled={busy||checking||(setup&&!setupTokenReady)}>{checking?'Verificando configurações...':busy?'Aguarde...':activate?'Ativar minha conta':setup?'Criar administrador':'Entrar no painel'} <ArrowRight size={18}/></button>
       </form><div className="auth-trust"><ShieldCheck size={17}/> Acesso controlado · Dados protegidos</div><p className="auth-demo">Vai apresentar a plataforma a um cliente? <Link to="/demonstracao">Explore a demonstração</Link> com dados fictícios.</p></div></div></div>;
 }
 
