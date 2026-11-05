@@ -174,7 +174,7 @@ async function handle(context: Context): Promise<Response> {
     const row = await db.prepare("SELECT published_json,published_version FROM site_pages WHERE slug='home'").first<{published_json:string|null;published_version:number}>();
     return json({ page: row?.published_json ? JSON.parse(row.published_json) : null, version: row?.published_version||0 });
   }
-  if (is('GET', 'setup-status')) return json({ setup_required: await setupRequired(db) });
+  if (is('GET', 'setup-status')) return json({ setup_required: await setupRequired(db), setup_token_ready: !!env.SETUP_TOKEN && env.SETUP_TOKEN.length >= 24 });
   if (is('POST', 'setup')) {
     if (!(await setupRequired(db))) fail('A conta administrativa já foi criada', 409);
     if (!env.SETUP_TOKEN || env.SETUP_TOKEN.length < 24) fail('Configure o segredo SETUP_TOKEN no Cloudflare antes de continuar', 503);
