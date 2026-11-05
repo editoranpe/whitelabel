@@ -1,0 +1,31 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "npe-white-label-demo",
+  "main": "./src/worker.ts",
+  "compatibility_date": "2026-11-04",
+  "workers_dev": true,
+  "keep_vars": true,
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "npe-white-label-demo",
+      "database_id": "REPLACE_WITH_A_NEW_D1_DATABASE_ID"
+    }
+  ],
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": [
+      "/api/*"
+    ]
+  },
+  "triggers": {
+    "crons": [
+      "0 6 * * *"
+    ]
+  },
+  "vars": {
+    "SITE_ORIGIN": "https://npe-white-label-demo.YOUR_SUBDOMAIN.workers.dev"
+  }
+}

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 214" role="img" aria-labelledby="t d">
+<title id="t">Editora NPE</title><desc id="d">Assinatura visual demonstrativa inspirada na identidade da Editora NPE. Substitua pelo logotipo oficial no editor.</desc>
+<rect width="620" height="214" rx="20" fill="#ffffff"/>
+<text x="26" y="57" fill="#f00483" font-family="Arial,Helvetica,sans-serif" font-size="48" font-weight="900" letter-spacing="-1">EDITORA</text>
+<text x="20" y="157" fill="#373b85" font-family="Arial,Helvetica,sans-serif" font-size="132" font-weight="900" letter-spacing="-13">npe</text>
+<g transform="translate(476 11)"><circle cx="53" cy="66" r="42" fill="#ffd100" stroke="#1e2229" stroke-width="7"/>
+<path d="M43 108v15h21v-15m-23 18h25m-24 7h24" stroke="#202329" stroke-width="7" stroke-linecap="round"/>
+<path d="M53 23V8M18 34 7 23M88 34 99 23M10 66H0M97 66h11" stroke="#202329" stroke-width="7" stroke-linecap="round"/>
+<path d="M43 104V72q-17-6-8-19c8-10 18 2 18 13 0-11 10-23 18-13 9 13-8 19-8 19v32" stroke="#202329" fill="none" stroke-width="5" stroke-linecap="round"/></g>
+<text x="230" y="184" fill="#1b1c20" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="800" font-style="italic">Nossa História é Criar Legados!</text>
+</svg>

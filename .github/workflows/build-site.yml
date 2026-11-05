@@ -1,0 +1,26 @@
+name: NPE White Label | Build and Isolation Checks
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+      - name: Compile, test API and verify customer isolation
+        run: npm run check:template
+      - name: Deployment isolation notice
+        run: |
+          echo "No deploy action is executed from this branch."
+          echo "Create a separate Worker and D1 before deploying a customer installation."

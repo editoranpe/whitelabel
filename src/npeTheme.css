@@ -1,0 +1,72 @@
+/* Editora NPE / White-label presentation theme.
+   Visual inspiration: user-provided brand palette. Every client can replace
+   logo, typography, background and accent in the visual editor. */
+:root{
+  --npe-magenta:#f00483;
+  --npe-indigo:#393c86;
+  --npe-yellow:#ffd100;
+  --npe-ink:#222443;
+  --npe-soft:#f8f7fc;
+}
+body{background:var(--npe-soft);color:var(--npe-ink)}
+.cib-rendered-site{--cib-header:#393c86;--cib-accent:#ffd100;background:#fff;color:#242542}
+.cib-rendered-site .cib-visual-header{background:var(--cib-header);min-height:96px;padding:12px max(22px,calc((100vw - 1220px)/2))}
+.cib-rendered-site .cib-visual-logo{gap:14px}
+.cib-rendered-site .cib-visual-logo img{width:114px;height:68px;max-width:114px;object-fit:contain;border-radius:5px;background:#fff;padding:2px}
+.cib-rendered-site .cib-visual-logo strong{font-size:18px;letter-spacing:-.035em}
+.cib-rendered-site .cib-visual-logo strong span{font-size:10px;letter-spacing:.115em;color:var(--npe-yellow)}
+.cib-rendered-site .cib-visual-header nav a{color:#fff}
+.cib-rendered-site .cib-visual-header nav a:hover{color:var(--npe-yellow)}
+.cib-rendered-site .cib-widget-heading h1{font-size:clamp(34px,4.5vw,62px);line-height:1.1;font-weight:850;letter-spacing:-.055em}
+.cib-rendered-site .cib-widget-heading p{font-size:clamp(17px,1.6vw,21px);line-height:1.7;color:inherit}
+.cib-rendered-site .cib-widget-button{background:var(--npe-magenta);color:#fff;border-radius:10px;min-height:52px}
+.cib-rendered-site .cib-widget-button:hover{background:#cb006f}
+.cib-rendered-site .cib-block-heading>span,.cib-rendered-site .cib-overline{color:var(--npe-magenta)}
+.cib-rendered-site .cib-flat-icon{background:#f0effb;color:var(--npe-indigo)}
+.cib-rendered-site .cib-icon-card{border:1px solid #e5e3f3;border-radius:12px}
+.cib-rendered-site .cib-testimonial{border-color:#ebe9f4;border-radius:12px}
+.cib-rendered-site .cib-testimonial-person strong{color:var(--npe-indigo)}
+.cib-rendered-site .cib-person-image{background:#eeedfa;color:var(--npe-indigo)}
+.cib-rendered-site .cib-widget-image img,.cib-rendered-site .cib-image-text-photo img{border-radius:12px;box-shadow:none}
+.cib-rendered-site .cib-visual-footer{background:#242654;color:#fff}
+.cib-rendered-site .cib-visual-section{scroll-margin-top:20px}
+.cib-rendered-site .cib-feature-icon{color:var(--npe-magenta);background:#fff2f9}
+.cib-rendered-site .cib-feature-grid article{border-color:#ece8f4}
+.cib-rendered-site .cib-signup-button{background:var(--npe-yellow);color:var(--npe-ink)}
+.cib-rendered-site .cib-photo-empty,.cib-rendered-site .cib-widget-image-placeholder{background:#f1eefb;color:var(--npe-indigo);border-color:#dad8ef}
+.portal-shell .portal-sidebar{background:var(--npe-indigo)}
+.portal-shell .sidebar-link.active{background:#ffffff1c}
+.portal-shell .sidebar-site{color:#fff}
+.portal-shell .sidebar-mark{background:var(--npe-yellow);color:var(--npe-indigo)}
+.portal-shell .button-primary,.portal-shell .positive-action{background:var(--npe-indigo);color:#fff}
+.portal-shell .metric-icon{background:#efedfa;color:var(--npe-indigo)}
+.portal-shell .metric-lime{background:#fff6da;color:#a57600}
+.portal-shell .metric-yellow{background:#fff0f8;color:var(--npe-magenta)}
+.auth-page .auth-side{background:var(--npe-indigo)}
+.auth-page .auth-side h1 em{color:var(--npe-yellow)}
+.auth-page .auth-main{background:var(--npe-soft)}
+.auth-page .button-primary{background:var(--npe-indigo)}
+.auth-page .eyebrow.light{color:var(--npe-yellow)}
+.fl-builder{--fl-accent:var(--npe-indigo);--fl-green:var(--npe-indigo)}
+.fl-builder .fl-primary,.fl-builder .fl-list-heading>button,.fl-builder .fl-media-upload{background:var(--npe-indigo);border-color:var(--npe-indigo)}
+.fl-builder .fl-tabs button.active{border-bottom-color:var(--npe-magenta);color:var(--npe-indigo)}
+.fl-builder .fl-view-site{color:var(--npe-indigo)}
+.fl-builder .fl-dot.dirty{background:var(--npe-magenta)}
+.fl-builder .fl-workspace{background:#f0eff8}
+.fl-builder .fl-canvas{box-shadow:none;border:1px solid #d9d8e7}
+.npe-privacy{min-height:100vh;background:var(--npe-soft);font-family:Inter,system-ui,sans-serif;color:var(--npe-ink)}
+.npe-privacy header{background:var(--npe-indigo);padding:12px max(22px,calc((100vw - 1050px)/2))}
+.npe-privacy header a{color:#fff;display:flex;gap:18px;align-items:center;font-size:13px;font-weight:800}
+.npe-privacy header img{background:#fff;width:105px;height:63px;object-fit:contain;border-radius:7px}
+.npe-privacy main{max-width:760px;margin:70px auto;padding:0 24px 100px}
+.npe-privacy main small{letter-spacing:.15em;color:var(--npe-magenta);font-weight:800}
+.npe-privacy main h1{font-size:clamp(32px,4vw,52px);line-height:1.12;letter-spacing:-.04em}
+.npe-privacy main p{font-size:16px;line-height:1.8}
+.npe-privacy-back{color:var(--npe-indigo);display:inline-flex;margin-top:22px;font-weight:800;text-decoration:underline}
+@media(max-width:720px){
+ .cib-rendered-site .cib-visual-header{padding:10px 16px}
+ .cib-rendered-site .cib-visual-logo img{width:80px;height:54px}
+ .cib-rendered-site .cib-visual-logo strong{font-size:14px}
+ .cib-rendered-site .cib-visual-logo strong span{font-size:9px}
+ .cib-rendered-site .cib-visual-section{padding:54px 18px!important}
+}

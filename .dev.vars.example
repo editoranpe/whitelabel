@@ -1,0 +1,2 @@
+# Somente para teste local. Nunca versionar o arquivo .dev.vars real.
+SETUP_TOKEN="COLOQUE_AQUI_UM_SEGREDO_ALEATORIO_DE_PELO_MENOS_32_CARACTERES"

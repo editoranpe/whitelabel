@@ -1,0 +1,43 @@
+{
+  "name": "npe-white-label-platform",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit -p tsconfig.json && vite build",
+    "preview": "wrangler dev",
+    "typecheck:api": "tsc --noEmit -p tsconfig.functions.json",
+    "check": "npm run build && npm run typecheck:api && npm run test:pix && npm run test:schema && npm run test:recurring && npm run test:csv && npm run test:builder && npm run test:auth && npm run test:media",
+    "test:pix": "node --experimental-strip-types --test tests/pix.test.ts",
+    "deploy": "npm run check && wrangler deploy",
+    "test:schema": "node --experimental-strip-types --test tests/schema.test.ts",
+    "test:recurring": "node --experimental-strip-types --test tests/recurring.test.ts",
+    "test:csv": "node --experimental-strip-types --test tests/csv-import.test.ts",
+    "test:builder": "node --experimental-strip-types --test tests/site-builder.test.ts",
+    "test:auth": "node --experimental-strip-types --test tests/auth.test.ts",
+    "test:media": "node --experimental-strip-types --test tests/media.test.ts",
+    "check:template": "npm run check && npm run test:white-label && node ./scripts/check-isolation.mjs",
+    "test:white-label": "node --experimental-strip-types --test tests/white-label.test.ts"
+  },
+  "dependencies": {
+    "lucide-react": "^0.468.0",
+    "qrcode": "^1.5.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/qrcode": "^1.5.5",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.0",
+    "typescript": "^5.7.0",
+    "vite": "^6.0.0",
+    "wrangler": "^4.0.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
