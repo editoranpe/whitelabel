@@ -17,8 +17,10 @@
     "test:builder": "node --experimental-strip-types --test tests/site-builder.test.ts",
     "test:auth": "node --experimental-strip-types --test tests/auth.test.ts",
     "test:media": "node --experimental-strip-types --test tests/media.test.ts",
-    "check:template": "npm run check && npm run test:white-label && node ./scripts/check-isolation.mjs",
-    "test:white-label": "node --experimental-strip-types --test tests/white-label.test.ts"
+    "check:template": "npm run check && npm run test:white-label && npm run test:cloudflare-config && node ./scripts/check-isolation.mjs",
+    "test:white-label": "node --experimental-strip-types --test tests/white-label.test.ts",
+    "prebuild": "node scripts/prepare-cloudflare.mjs",
+    "test:cloudflare-config": "node --experimental-strip-types --test tests/cloudflare-config.test.ts"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",
