@@ -3,6 +3,10 @@
 > **Edição independente para demonstração comercial e personalização por cliente.**
 > Este é o repositório independente `editoranpe/whitelabel`, com código na branch `main`. A edição Conectando Ideias Brasil permanece no repositório `editoranpe/conectando-ideias-brasil`, com seu próprio Cloudflare Worker e banco D1.
 
+## Colocar o site e o painel no Cloudflare
+
+Com o GitHub conectado ao Cloudflare Workers, siga o guia **[CLOUDFLARE-SETUP.md](./CLOUDFLARE-SETUP.md)**. Ele explica as variáveis de build `NPE_WORKER_NAME` e `NPE_D1_DATABASE_ID`, o D1 exclusivo, o segredo `SETUP_TOKEN`, a publicação e os testes das rotas `/entrar`, `/painel` e `/editar-site`.
+
 ## O que você recebe
 
 - Site demonstrativo com identidade visual inspirada na Editora NPE (rosa `#f00483`, azul-violeta `#393c86`, amarelo `#ffd100`) e ilustrações de marcação.
