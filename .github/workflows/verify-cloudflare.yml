@@ -1,0 +1,22 @@
+name: Verify Cloudflare NPE deployment
+on:
+  workflow_dispatch:
+    inputs:
+      worker_url:
+        description: Public https://...workers.dev URL for the White Label Worker
+        required: true
+        type: string
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check live site and admin setup
+        env:
+          NPE_SITE_ORIGIN: ${{ inputs.worker_url }}
+        run: node scripts/verify-deployment.mjs
