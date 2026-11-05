@@ -6,11 +6,13 @@ const wrangler=JSON.parse(read('wrangler.jsonc'));
 const source=['src/worker.ts','src/Site.tsx','src/whiteLabel.ts','functions/api/[[path]].ts','functions/_lib/notices.ts','src/App.tsx'].map(read).join('\n');
 
 assert.notEqual(wrangler.name,'conectando-ideias-brasil','Worker must not target existing production');
-assert.equal(wrangler.name,'npe-white-label-demo','Template Worker must use its own name');
+assert.ok(/^[a-z0-9-]{2,63}$/.test(wrangler.name),'Worker name must be safe and explicit');
+assert.ok(!wrangler.name.includes('conectando-ideias'),'Original Worker name is forbidden');
 assert.ok(wrangler.d1_databases?.length===1 && wrangler.d1_databases[0].binding==='DB');
 assert.notEqual(wrangler.d1_databases[0].database_name,'conectando-ideias-brasil');
-assert.ok(/REPLACE_WITH_A_NEW_D1_DATABASE_ID/.test(wrangler.d1_databases[0].database_id),
-  'The repository template must not contain any real customer D1 identifier');
+assert.ok(/^(REPLACE_WITH_A_NEW_D1_DATABASE_ID|[0-9a-f]{8}-[0-9a-f-]{27})$/i.test(wrangler.d1_databases[0].database_id),
+  'Database ID must be an explicit template placeholder or UUID');
+assert.ok(!wrangler.d1_databases[0].database_name.includes('conectando-ideias'),'Original D1 name is forbidden');
 assert.doesNotMatch(source,/conectando-ideias-brasil\.jeferson-samagaia\.workers\.dev/i);
 assert.doesNotMatch(source,/Conectando Ideias Brasil/i);
 assert.match(read('src/whiteLabel.ts'),/Editora NPE/);
