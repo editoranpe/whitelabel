@@ -117,6 +117,24 @@ Não use senhas de demonstração ou senhas já mostradas em capturas de tela.
 - **Privacidade:** substitua os textos legais exemplificativos antes de cadastrar pessoas reais.
 - **Biblioteca WebP:** usa o mesmo D1 exclusivo, sem R2 obrigatório no protótipo.
 
+## Verificação automatizada de produção
+
+Depois de publicar e configurar `SETUP_TOKEN`, acesse
+[GitHub Actions → Verify Cloudflare NPE deployment](https://github.com/editoranpe/whitelabel/actions/workflows/verify-cloudflare.yml)
+e clique em **Run workflow**. Preencha `worker_url` com o endereço
+HTTPS público do novo Worker (exatamente como aparece no Cloudflare).
+
+O teste consulta `/`, `/api/version`, `/api/health`, `/api/setup-status`
+e `/entrar`. Não precisa de credenciais e nunca acessa os dados pessoais
+da instalação. O resultado **verde** comprova que o site público e o
+primeiro acesso estão disponíveis. A autenticação propriamente dita deve
+ser testada no navegador pelo administrador.
+
+Também é possível testar localmente com:
+```bash
+npm run smoke:cloudflare -- https://SEU-WORKER.SUBDOMINIO.workers.dev
+```
+
 ## Solução de problemas
 
 - **Build falhou antes de publicar**: abra os logs de Workers Builds; as mensagens
