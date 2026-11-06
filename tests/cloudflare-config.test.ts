@@ -21,7 +21,7 @@ const invoke=(path,variables={})=>spawnSync(process.execPath,['scripts/prepare-c
  env:{...process.env,NPE_WRANGLER_CONFIG_FILE:path,
   NPE_WORKER_NAME:'npe-cliente-demo',
   NPE_D1_DATABASE_ID:'e3d71ad0-28ed-4115-a006-8626c66ca178',
-  NPE_D1_DATABASE_NAME:'npe-cliente-demo',NPE_SITE_ORIGIN:'',
+  NPE_D1_DATABASE_NAME:'npe-cliente-demo',
   ...variables}
 });
 test('Cloudflare build resolves dedicated worker and D1 while preserving assets',()=>{
