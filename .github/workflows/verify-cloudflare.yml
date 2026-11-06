@@ -1,5 +1,8 @@
 name: Verify Cloudflare NPE deployment
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
     inputs:
       worker_url:
@@ -16,7 +19,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Allow Cloudflare to process the latest commit
+        if: github.event_name == 'push'
+        run: sleep 50
       - name: Check live site and admin setup
         env:
-          NPE_SITE_ORIGIN: ${{ inputs.worker_url }}
+          NPE_SITE_ORIGIN: ${{ inputs.worker_url || 'https://whitelabel.jeferson-samagaia.workers.dev' }}
         run: node scripts/verify-deployment.mjs
