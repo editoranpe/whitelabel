@@ -48,11 +48,23 @@ test('refuses missing D1, invalid Worker name and original Conectando Ideias Wor
  }finally{rmSync(dir,{recursive:true,force:true})}
 });
 test('omits placeholder origin to avoid sending notices to an invented URL',()=>{
- const {dir,path}=fixture();
+ const {dir,path}=fixture({vars:{SITE_ORIGIN:'https://npe-white-label-demo.YOUR_SUBDOMAIN.workers.dev'}});
  try{
   const p=invoke(path);
   assert.equal(p.status,0,p.stderr);
   const config=JSON.parse(readFileSync(path,'utf8'));
   assert.ok(!('SITE_ORIGIN' in (config.vars||{})));
+ }finally{rmSync(dir,{recursive:true,force:true})}
+});
+
+test('uses the existing whitelabel Worker name and verified origin when optional overrides are absent',()=>{
+ const {dir,path}=fixture({name:'whitelabel',vars:{SITE_ORIGIN:'https://whitelabel.jeferson-samagaia.workers.dev'}});
+ try{
+  const result=invoke(path,{NPE_WORKER_NAME:'',NPE_D1_DATABASE_NAME:''});
+  assert.equal(result.status,0,result.stderr);
+  const deployed=JSON.parse(readFileSync(path,'utf8'));
+  assert.equal(deployed.name,'whitelabel');
+  assert.equal(deployed.d1_databases[0].database_name,'npe-white-label-demo');
+  assert.equal(deployed.vars.SITE_ORIGIN,'https://whitelabel.jeferson-samagaia.workers.dev');
  }finally{rmSync(dir,{recursive:true,force:true})}
 });
