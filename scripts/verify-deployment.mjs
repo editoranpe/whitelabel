@@ -1,40 +1,43 @@
-/** Public deployment smoke test. No credentials or admin data needed.
- * Invoke: node scripts/verify-deployment.mjs https://YOUR-WORKER.SUBDOMAIN.workers.dev
- */
+/** Read-only smoke check of the public Cloudflare Worker; no credentials used. */
 const input=(process.argv[2]||process.env.NPE_SITE_ORIGIN||'').trim();
-if(!input){console.error('Informe a URL real do Worker para testar o site e o painel.');process.exit(2)}
-let site;
+if(!input){console.error('Informe o endereço real do Worker.');process.exit(2)}
+let base;
 try{
-  site=new URL(input);
-  if(site.protocol!=='https:'||!site.hostname.endsWith('.workers.dev')||site.username||site.password||site.search||site.hash||site.pathname!=='/')
-    throw new Error('URL inválida');
-}catch{console.error('Informe uma URL HTTPS pública do Cloudflare Workers, sem caminho.');process.exit(2)}
-site=site.origin;
-const get=async(path)=>{
- const response=await fetch(site+path,{signal:AbortSignal.timeout(20000),redirect:'follow',headers:{accept:path==='/'?'text/html':'application/json'}});
- if(!response.ok)throw Error(`${path} respondeu HTTP ${response.status}`);
- return path==='/'?await response.text():await response.json();
-};
-const test=async()=>{
- const home=await get('/');
- if(!/<html|<!doctype/i.test(home))throw Error('A página inicial não retornou HTML');
- console.log('✓ Página institucional: OK');
- const version=await get('/api/version');
- if(version.runtime!=='cloudflare-worker'||version.editor_release!=='npe-white-label-v1')
-  throw Error('Worker está executando uma versão diferente do White Label NPE');
- if(!version.deployment?.d1_bound)throw Error('Banco D1 não conectado ao Worker (deployment.d1_bound=false)');
- console.log('✓ Worker NPE + binding D1: OK');
- const health=await get('/api/health');
- if(!health.ok)throw Error('A API não confirmou inicialização do D1');
- console.log('✓ API e esquema inicial do banco D1: OK');
- const setup=await get('/api/setup-status');
- if(typeof setup.setup_required!=='boolean')throw Error('Resposta inválida do primeiro acesso');
- if(setup.setup_required&&!setup.setup_token_ready)
-  throw Error('Configure SETUP_TOKEN como Secret em Production para criar o administrador');
- console.log('✓ Primeiro acesso: '+(setup.setup_required?'pronto para criar administrador':'administrador já configurado'));
- const login=await get('/entrar');
- if(!/<html|<!doctype/i.test(login))throw Error('Tela de login não foi entregue pelo Worker');
- console.log('✓ Site e portal de acesso: OK');
- console.log('Cloudflare NPE pronto: '+site);
-};
-test().catch(e=>{console.error('FALHA NPE_DEPLOY_CHECK:',String(e.message||e));process.exitCode=1});
+ const url=new URL(input);
+ if(url.protocol!=='https:'||!url.hostname.endsWith('.workers.dev')||url.username||url.password||url.search||url.hash||url.pathname!=='/')
+  throw Error('URL inválida');
+ base=url.origin;
+}catch{console.error('Use a URL https://<worker>.<subdominio>.workers.dev');process.exit(2)}
+let errors=0;
+async function inspect(path,check){
+ try{
+  const response=await fetch(base+path,{signal:AbortSignal.timeout(18000),redirect:'follow',headers:{accept:'*/*'}});
+  const raw=await response.text();
+  const type=response.headers.get('content-type')||'(não informado)';
+  let content;
+  try{content=JSON.parse(raw)}catch{content=null}
+  const result=check({response,raw,type,content});
+  if(!response.ok||result!==true){
+   errors++;
+   const sample=raw.replace(/[\r\n\t]+/g,' ').replace(/\s+/g,' ').slice(0,135);
+   console.error(`✗ ${path}: HTTP ${response.status} / ${type} / ${typeof result==='string'?result:'resposta inesperada'}`);
+   console.error(`  Prévia de resposta pública: ${JSON.stringify(sample)}`);
+  }else console.log(`✓ ${path}: HTTP ${response.status} / ${type}`);
+ }catch(error){errors++;console.error(`✗ ${path}: ${String(error.message||error)}`)}
+}
+await inspect('/',({raw,type})=>/<!doctype|<html/i.test(raw)&&/text\/html/i.test(type)||'Página inicial ainda não é o site NPE');
+await inspect('/api/version',({content})=>{
+ if(!content)return 'Sem JSON válido da API';
+ if(content.runtime!=='cloudflare-worker'||content.editor_release!=='npe-white-label-v1')return 'Worker ainda não executa a versão NPE';
+ if(!content.deployment?.d1_bound)return 'Banco D1 não vinculado ao Worker';
+ return true;
+});
+await inspect('/api/health',({content})=>content?.ok===true||'API ou estrutura D1 indisponível');
+await inspect('/api/setup-status',({content})=>{
+ if(typeof content?.setup_required!=='boolean')return 'Primeiro acesso não responde corretamente';
+ if(content.setup_required&&!content.setup_token_ready)return 'SETUP_TOKEN ausente no Worker';
+ return true;
+});
+await inspect('/entrar',({raw,type})=>/<html|<!doctype/i.test(raw)&&/text\/html/i.test(type)||'Página de acesso não disponível');
+if(errors){console.error(`NPE_DEPLOY_CHECK: ${errors} de 5 verificações pendentes em ${base}`);process.exitCode=1}
+else console.log('NPE_DEPLOY_CHECK: Site público, API, D1 e primeiro acesso disponíveis em '+base);
