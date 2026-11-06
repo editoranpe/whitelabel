@@ -19,14 +19,15 @@ let config;
 try{config=JSON.parse(readFileSync(file,'utf8'))}
 catch{die('Não foi possível ler o wrangler.jsonc do projeto.')}
 
-const worker=(process.env.NPE_WORKER_NAME||'').trim();
+const worker=(process.env.NPE_WORKER_NAME||config.name||'').trim();
 const databaseId=(process.env.NPE_D1_DATABASE_ID||'').trim();
-const databaseName=(process.env.NPE_D1_DATABASE_NAME||'npe-white-label-demo').trim();
-const origin=(process.env.NPE_SITE_ORIGIN||'').trim().replace(/\/$/,'');
+const databaseName=(process.env.NPE_D1_DATABASE_NAME||config.d1_databases?.[0]?.database_name||'npe-white-label-demo').trim();
+const inputOrigin=(process.env.NPE_SITE_ORIGIN??config.vars?.SITE_ORIGIN??'').trim().replace(/\/$/,'');
+const origin=process.env.NPE_SITE_ORIGIN===undefined&&/YOUR_SUBDOMAIN|REPLACE/i.test(inputOrigin)?'':inputOrigin;
 const validName=/^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$/;
 const uuid=/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 if(!worker||!validName.test(worker))
- die('Defina a variável de BUILD NPE_WORKER_NAME com o nome EXATO do Worker já criado no Cloudflare (sem .workers.dev).');
+ die('O nome do Worker é inválido. Confira NPE_WORKER_NAME ou wrangler.jsonc.');
 if(worker==='conectando-ideias-brasil'||worker.includes('conectando-ideias'))
  die('O Worker original do Conectando Ideias Brasil não pode ser usado nesta versão.');
 if(!uuid.test(databaseId))
