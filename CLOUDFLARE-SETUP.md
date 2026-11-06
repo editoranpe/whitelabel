@@ -31,8 +31,8 @@ A configuração recomendada é:
 | Production branch | `main` |
 | Node.js | 22 ou mais recente |
 
-**O nome real do Worker deve coincidir com o publicado pelo Wrangler.**
-O passo abaixo resolve isso antes de publicar, sem modificar o GitHub.
+**O nome real do Worker é `whitelabel`, e já corresponde ao `wrangler.jsonc` deste repositório.**
+O passo abaixo insere o ID do banco D1 durante o build, sem precisar alterar o GitHub.
 
 ## 3. Definir variáveis de BUILD no Cloudflare
 
@@ -40,17 +40,17 @@ Ainda em **Settings → Build → Build variables and secrets**, adicione:
 
 | Variável | Valor |
 |---|---|
-| `NPE_WORKER_NAME` | Nome **exato** do Worker criado, por exemplo `npe-white-label-demo`, sem `.workers.dev` |
-| `NPE_D1_DATABASE_ID` | UUID do banco D1 exclusivo criado no passo 1 |
-| `NPE_D1_DATABASE_NAME` | Nome exato do banco D1, por exemplo `npe-white-label-demo` |
-| `NPE_SITE_ORIGIN` | Opcional: URL HTTPS pública e definitiva do Worker, por exemplo `https://NOME.SUBDOMINIO.workers.dev` |
+| `NPE_D1_DATABASE_ID` | **Obrigatória:** UUID do banco D1 exclusivo criado no passo 1 |
+| `NPE_D1_DATABASE_NAME` | Opcional: use apenas se o banco não se chama `npe-white-label-demo` |
+| `NPE_WORKER_NAME` | Opcional: o nome `whitelabel` já está configurado para esta implantação |
+| `NPE_SITE_ORIGIN` | Opcional: `https://whitelabel.jeferson-samagaia.workers.dev` já está configurado |
 
 O script `scripts/prepare-cloudflare.mjs` é executado automaticamente antes de
 `npm run build` dentro de Workers Builds, usando `WORKERS_CI=1`.
 Ele preenche o `wrangler.jsonc` **apenas no ambiente temporário do build**,
 sem gravar IDs de clientes no GitHub.
 
-O arquivo versionado continua com um ID de exemplo propositalmente inválido.
+O arquivo versionado já identifica o Worker `whitelabel` e a URL `https://whitelabel.jeferson-samagaia.workers.dev`. Ele conserva apenas o identificador do banco D1 como exemplo propositalmente inválido.
 Se o build indicar `NPE_CLOUDFLARE_CONFIG`, confira estas variáveis.
 
 Não coloque `SETUP_TOKEN` em Build variables: é segredo de execução, não de compilação.
