@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "npe-white-label-demo",
+  "name": "whitelabel",
   "main": "./src/worker.ts",
   "compatibility_date": "2026-11-04",
   "workers_dev": true,
@@ -26,6 +26,6 @@
     ]
   },
   "vars": {
-    "SITE_ORIGIN": "https://npe-white-label-demo.YOUR_SUBDOMAIN.workers.dev"
+    "SITE_ORIGIN": "https://whitelabel.jeferson-samagaia.workers.dev"
   }
 }
