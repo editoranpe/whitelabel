@@ -20,7 +20,7 @@ try{config=JSON.parse(readFileSync(file,'utf8'))}
 catch{die('Não foi possível ler o wrangler.jsonc do projeto.')}
 
 const worker=(process.env.NPE_WORKER_NAME||config.name||'').trim();
-const databaseId=(process.env.NPE_D1_DATABASE_ID||'').trim();
+const databaseId=(process.env.NPE_D1_DATABASE_ID||config.d1_databases?.[0]?.database_id||'').trim();
 const databaseName=(process.env.NPE_D1_DATABASE_NAME||config.d1_databases?.[0]?.database_name||'npe-white-label-demo').trim();
 const inputOrigin=(process.env.NPE_SITE_ORIGIN??config.vars?.SITE_ORIGIN??'').trim().replace(/\/$/,'');
 const origin=process.env.NPE_SITE_ORIGIN===undefined&&/YOUR_SUBDOMAIN|REPLACE/i.test(inputOrigin)?'':inputOrigin;
@@ -31,7 +31,7 @@ if(!worker||!validName.test(worker))
 if(worker==='conectando-ideias-brasil'||worker.includes('conectando-ideias'))
  die('O Worker original do Conectando Ideias Brasil não pode ser usado nesta versão.');
 if(!uuid.test(databaseId))
- die('Crie um banco D1 EXCLUSIVO e defina NPE_D1_DATABASE_ID com o UUID do banco no ambiente de BUILD do Cloudflare.');
+ die('Crie um banco D1 EXCLUSIVO e defina NPE_D1_DATABASE_ID com o UUID do banco nas variáveis de BUILD do Cloudflare (Configurações > Build), ou preencha database_id no wrangler.jsonc.');
 if(!validName.test(databaseName)||databaseName.includes('conectando-ideias'))
  die('NPE_D1_DATABASE_NAME precisa conter um nome seguro e exclusivo, sem referência ao banco do grupo.');
 if(origin){
