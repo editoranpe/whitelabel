@@ -43,14 +43,14 @@ Ainda em **Settings → Build → Build variables and secrets**, adicione:
 | `NPE_D1_DATABASE_ID` | **Obrigatória:** UUID do banco D1 exclusivo criado no passo 1 |
 | `NPE_D1_DATABASE_NAME` | Opcional: use apenas se o banco não se chama `npe-white-label-demo` |
 | `NPE_WORKER_NAME` | Opcional: o nome `whitelabel` já está configurado para esta implantação |
-| `NPE_SITE_ORIGIN` | Opcional: `https://whitelabel.jeferson-samagaia.workers.dev` já está configurado |
+| `NPE_SITE_ORIGIN` | Opcional: `https://whitelabel.digitalnpe.workers.dev` já está configurado |
 
 O script `scripts/prepare-cloudflare.mjs` é executado automaticamente antes de
 `npm run build` dentro de Workers Builds, usando `WORKERS_CI=1`.
 Ele preenche o `wrangler.jsonc` **apenas no ambiente temporário do build**,
 sem gravar IDs de clientes no GitHub.
 
-O arquivo versionado já identifica o Worker `whitelabel` e a URL `https://whitelabel.jeferson-samagaia.workers.dev`. Ele conserva apenas o identificador do banco D1 como exemplo propositalmente inválido.
+O arquivo versionado já identifica o Worker `whitelabel` e a URL `https://whitelabel.digitalnpe.workers.dev`. Ele conserva apenas o identificador do banco D1 como exemplo propositalmente inválido.
 Se o build indicar `NPE_CLOUDFLARE_CONFIG`, confira estas variáveis.
 
 Não coloque `SETUP_TOKEN` em Build variables: é segredo de execução, não de compilação.

@@ -44,7 +44,7 @@ test('refuses missing D1, invalid Worker name and original Conectando Ideias Wor
   assert.notEqual(invoke(path,{NPE_D1_DATABASE_ID:'REPLACE_WITH_A_NEW_D1_DATABASE_ID'}).status,0);
   assert.notEqual(invoke(path,{NPE_WORKER_NAME:'conectando-ideias-brasil'}).status,0);
   assert.notEqual(invoke(path,{NPE_WORKER_NAME:'not valid'}).status,0);
-  assert.notEqual(invoke(path,{NPE_SITE_ORIGIN:'https://conectando-ideias-brasil.jeferson-samagaia.workers.dev'}).status,0);
+  assert.notEqual(invoke(path,{NPE_SITE_ORIGIN:'https://conectando-ideias-brasil.digitalnpe.workers.dev'}).status,0);
  }finally{rmSync(dir,{recursive:true,force:true})}
 });
 test('omits placeholder origin to avoid sending notices to an invented URL',()=>{
@@ -58,13 +58,13 @@ test('omits placeholder origin to avoid sending notices to an invented URL',()=>
 });
 
 test('uses the existing whitelabel Worker name and verified origin when optional overrides are absent',()=>{
- const {dir,path}=fixture({name:'whitelabel',vars:{SITE_ORIGIN:'https://whitelabel.jeferson-samagaia.workers.dev'}});
+ const {dir,path}=fixture({name:'whitelabel',vars:{SITE_ORIGIN:'https://whitelabel.digitalnpe.workers.dev'}});
  try{
   const result=invoke(path,{NPE_WORKER_NAME:'',NPE_D1_DATABASE_NAME:''});
   assert.equal(result.status,0,result.stderr);
   const deployed=JSON.parse(readFileSync(path,'utf8'));
   assert.equal(deployed.name,'whitelabel');
   assert.equal(deployed.d1_databases[0].database_name,'npe-white-label-demo');
-  assert.equal(deployed.vars.SITE_ORIGIN,'https://whitelabel.jeferson-samagaia.workers.dev');
+  assert.equal(deployed.vars.SITE_ORIGIN,'https://whitelabel.digitalnpe.workers.dev');
  }finally{rmSync(dir,{recursive:true,force:true})}
 });

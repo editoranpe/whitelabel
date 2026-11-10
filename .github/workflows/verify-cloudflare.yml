@@ -24,5 +24,5 @@ jobs:
         run: sleep 50
       - name: Check live site and admin setup
         env:
-          NPE_SITE_ORIGIN: ${{ inputs.worker_url || 'https://whitelabel.jeferson-samagaia.workers.dev' }}
+          NPE_SITE_ORIGIN: ${{ inputs.worker_url || 'https://whitelabel.digitalnpe.workers.dev' }}
         run: node scripts/verify-deployment.mjs
