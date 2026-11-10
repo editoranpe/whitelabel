@@ -112,7 +112,7 @@ Rota separada (`admin.nascidosparaempreender.com.br`), com login próprio e aute
 
 ## 7. Pendências
 
-1. Nome do encarregado de dados (DPO) — hoje consta apenas o e-mail editoranpe@gmail.com.
+1. ~~Nome do encarregado de dados (DPO)~~ — definido: Jeferson Samagaia e Gisele Samagaia.
 2. Revisão jurídica dos Termos e da Política.
 3. Recomendado: e-mail com domínio próprio (ex.: contato@nascidosparaempreender.com.br) para
    envio pelo Resend e para o DPO.

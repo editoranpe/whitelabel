@@ -6,7 +6,7 @@
 Última atualização: [DATA] · Versão [1.0]
 
 ## 1. Quem somos
-NASCIDOS PARA EMPREENDER EDITORA LTDA, CNPJ 47.575.297/0001-87, Rua Johann Ohf, 1445, Água Verde, Blumenau/SC, CEP 89042-299 ("nós"). Encarregado de dados (DPO): [NOME DO ENCARREGADO],
+NASCIDOS PARA EMPREENDER EDITORA LTDA, CNPJ 47.575.297/0001-87, Rua Johann Ohf, 1445, Água Verde, Blumenau/SC, CEP 89042-299 ("nós"). Encarregado de dados (DPO): Jeferson Samagaia e Gisele Samagaia,
 editoranpe@gmail.com.
 
 ## 2. Papéis
@@ -29,7 +29,7 @@ editoranpe@gmail.com.
 ## 4. Compartilhamento
 Compartilhamos dados apenas com fornecedores necessários ao serviço: Cloudflare
 (hospedagem), Asaas (pagamentos), Conta Azul (nota fiscal), Resend (e-mails),
-Evolution API / [HOSPEDAGEM] (WhatsApp), Meta e Google (anúncios, mediante consentimento), e
+Evolution API, em servidor próprio (evoapi.agentenpe.com.br) (WhatsApp), Meta e Google (anúncios, mediante consentimento), e
 autoridades quando exigido por lei. Não vendemos dados pessoais.
 
 ## 5. Transferência internacional
