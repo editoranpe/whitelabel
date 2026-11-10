@@ -1,4 +1,4 @@
-# Política de Privacidade — [NOME DA PLATAFORMA]
+# Política de Privacidade — Nascidos para Empreender
 
 > **RASCUNHO PARA REVISÃO JURÍDICA.** Modelo alinhado à LGPD (Lei 13.709/2018).
 > Substitua os campos entre colchetes e valide com advogado antes de publicar.
@@ -6,8 +6,8 @@
 Última atualização: [DATA] · Versão [1.0]
 
 ## 1. Quem somos
-[RAZÃO SOCIAL], CNPJ [CNPJ], [ENDEREÇO] ("nós"). Encarregado de dados (DPO): [NOME],
-[E-MAIL DO DPO].
+NASCIDOS PARA EMPREENDER EDITORA LTDA, CNPJ 47.575.297/0001-87, Rua Johann Ohf, 1445, Água Verde, Blumenau/SC, CEP 89042-299 ("nós"). Encarregado de dados (DPO): [NOME DO ENCARREGADO],
+editoranpe@gmail.com.
 
 ## 2. Papéis
 - **Dados dos nossos clientes** (quem contrata a Plataforma e seus usuários administradores):
@@ -28,7 +28,7 @@
 
 ## 4. Compartilhamento
 Compartilhamos dados apenas com fornecedores necessários ao serviço: Cloudflare
-(hospedagem), Asaas (pagamentos), Conta Azul (nota fiscal), [PROVEDOR DE E-MAIL] (e-mails),
+(hospedagem), Asaas (pagamentos), Conta Azul (nota fiscal), Resend (e-mails),
 Evolution API / [HOSPEDAGEM] (WhatsApp), Meta e Google (anúncios, mediante consentimento), e
 autoridades quando exigido por lei. Não vendemos dados pessoais.
 
@@ -38,11 +38,11 @@ garantias contratuais compatíveis com a LGPD (art. 33).
 
 ## 6. Retenção
 - Conta ativa: enquanto durar a assinatura.
-- Após cancelamento: dados da conta e dos cadastros excluídos em até [30] dias, após
+- Após cancelamento: dados da conta e dos cadastros excluídos em até 30 dias, após
   oportunidade de exportação.
 - Dados fiscais e de cobrança: 5 anos (obrigação legal).
 - Registros de acesso: 6 meses.
-- Contas de teste não convertidas: até [7] dias após o término do teste.
+- Contas de teste não convertidas: até 7 dias após o término do teste.
 
 ## 7. Segurança
 Criptografia em trânsito (HTTPS), senhas armazenadas com hash, isolamento lógico entre
@@ -53,7 +53,7 @@ afetados conforme a lei.
 ## 8. Direitos do titular
 Você pode solicitar: confirmação e acesso, correção, anonimização, bloqueio ou eliminação,
 portabilidade, informação sobre compartilhamento, revogação de consentimento e revisão de
-decisões automatizadas. Contato: [E-MAIL DO DPO]. Resposta em até 15 dias.
+decisões automatizadas. Contato: editoranpe@gmail.com. Resposta em até 15 dias.
 
 ## 9. Cookies
 Usamos cookies essenciais (login e segurança) e, com seu consentimento, cookies de

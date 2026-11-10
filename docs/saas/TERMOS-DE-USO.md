@@ -1,4 +1,4 @@
-# Termos de Uso — [NOME DA PLATAFORMA]
+# Termos de Uso — Nascidos para Empreender
 
 > **RASCUNHO PARA REVISÃO JURÍDICA.** Modelo baseado em práticas usuais de SaaS B2B no Brasil.
 > Substitua os campos entre colchetes e valide com advogado antes de publicar.
@@ -6,8 +6,8 @@
 Última atualização: [DATA] · Versão [1.0]
 
 ## 1. Partes e aceite
-1.1. Estes Termos regem o uso da plataforma [NOME DA PLATAFORMA] ("Plataforma"), fornecida
-por [RAZÃO SOCIAL], CNPJ [CNPJ], com sede em [ENDEREÇO] ("Fornecedora"), à pessoa física ou
+1.1. Estes Termos regem o uso da plataforma Nascidos para Empreender ("Plataforma"), fornecida
+por NASCIDOS PARA EMPREENDER EDITORA LTDA, CNPJ 47.575.297/0001-87, com sede em Rua Johann Ohf, 1445, Água Verde, Blumenau/SC, CEP 89042-299 ("Fornecedora"), à pessoa física ou
 jurídica que cria uma conta ("Cliente").
 1.2. Ao marcar a caixa de aceite no cadastro ou utilizar a Plataforma, o Cliente declara ter
 lido e concordado com estes Termos e com a Política de Privacidade. Quem aceita em nome de
@@ -29,12 +29,12 @@ ou uso indevido.
 
 ## 4. Período de teste
 4.1. Novas contas têm teste gratuito de 24 (vinte e quatro) horas, sem cobrança.
-4.2. Encerrado o teste sem contratação, o painel fica em modo restrito por [7] dias e, após
+4.2. Encerrado o teste sem contratação, o painel fica em modo restrito por 7 dias e, após
 esse prazo, a conta e os dados de teste podem ser excluídos.
 
 ## 5. Planos, preços e pagamento
 5.1. Os planos, limites (cadastros, chaves Pix, domínio próprio) e preços vigentes estão em
-[URL DOS PLANOS].
+https://nascidosparaempreender.com.br/planos.
 5.2. A assinatura é mensal, pré-paga e renovada automaticamente, cobrada via Asaas por Pix,
 boleto ou cartão de crédito.
 5.3. Nota fiscal de serviço é emitida após a confirmação de cada pagamento.
@@ -52,7 +52,7 @@ aviso prévio por e-mail e possibilidade de exportação.
 ## 7. Cancelamento
 7.1. O Cliente pode cancelar a qualquer momento pelo painel, sem multa. O acesso permanece
 até o fim do período já pago; não há reembolso proporcional, salvo previsão legal.
-7.2. Antes do encerramento, o Cliente pode exportar seus dados em CSV. Após [30] dias do
+7.2. Antes do encerramento, o Cliente pode exportar seus dados em CSV. Após 30 dias do
 encerramento, os dados são excluídos, exceto os que devam ser mantidos por obrigação legal.
 
 ## 8. Obrigações e uso aceitável
@@ -75,10 +75,10 @@ razoável, para que este cumpra suas obrigações perante a ANPD e os titulares.
 
 ## 10. Disponibilidade e suporte
 10.1. A Fornecedora empregará esforços comercialmente razoáveis para manter disponibilidade
-mensal de [99,5]%, excluídas manutenções programadas e falhas de terceiros (infraestrutura,
+mensal de 99,5%, excluídas manutenções programadas e falhas de terceiros (infraestrutura,
 gateways, provedores de mensagem).
-10.2. O suporte é prestado por videoaulas, central de ajuda e [canal], em dias úteis, das
-[9h às 18h].
+10.2. O suporte é prestado por videoaulas, central de ajuda e WhatsApp, em dias úteis, das
+9h às 18h.
 
 ## 11. Propriedade intelectual
 11.1. A Plataforma, sua marca, layout e código pertencem à Fornecedora.
@@ -96,5 +96,5 @@ nem por falhas de serviços de terceiros.
 antecedência. O uso continuado após a vigência implica aceite.
 
 ## 14. Disposições gerais
-14.1. Comunicações oficiais: e-mail cadastrado do Cliente e [E-MAIL DA FORNECEDORA].
-14.2. Fica eleito o foro da comarca de [CIDADE/UF], salvo foro do consumidor quando aplicável.
+14.1. Comunicações oficiais: e-mail cadastrado do Cliente e editoranpe@gmail.com.
+14.2. Fica eleito o foro da comarca de Blumenau/SC, salvo foro do consumidor quando aplicável.

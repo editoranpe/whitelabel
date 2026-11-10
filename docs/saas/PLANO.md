@@ -15,6 +15,10 @@
 | Domínio | Subdomínio nos planos 1 e 2; domínio próprio no plano 3 |
 | Suporte | Autoatendimento com videoaulas (sem plano "fazemos para você") |
 | Meta | 30 clientes em 6 meses, 100 em 12 meses |
+| Marca / domínio | Nascidos para Empreender — `nascidosparaempreender.com.br` |
+| E-mail transacional | Resend |
+| Anti-fraude no teste | Código de verificação por WhatsApp antes de liberar o teste |
+| Preços | R$ 79 / R$ 149 / R$ 297 por mês; anual com 2 meses grátis |
 | Arquitetura | **Multi-inquilino** (um sistema, uma empresa por "tenant") |
 | Lançamento | Validar com ativação manual enquanto a automação é construída |
 
@@ -24,9 +28,10 @@
 |---|---|---|---|
 | Cadastros | até 50 | até 100 | ilimitados |
 | Chaves Pix | 1 | 1 | ilimitadas |
-| Endereço | `empresa.<dominio-da-plataforma>` | `empresa.<dominio-da-plataforma>` | domínio próprio + subdomínio |
+| Endereço | `empresa.nascidosparaempreender.com.br` | `empresa.nascidosparaempreender.com.br` | domínio próprio + subdomínio |
 | Módulos | todos | todos | todos |
-| Preço | a definir | a definir | a definir |
+| Mensal | R$ 79 | R$ 149 | R$ 297 |
+| Anual (2 meses grátis) | R$ 790 | R$ 1.490 | R$ 2.970 |
 
 Os limites ficam **configuráveis no Super Admin** (nada fixo no código), permitindo criar,
 alterar preços, limites e promoções sem programar. Ao atingir o limite, o cliente vê aviso e
@@ -58,7 +63,7 @@ Anúncio → Landing page → Formulário → Conta de teste (24h) criada na hor
 
 ## 4. Área Super Admin (sua área)
 
-Rota separada (`admin.<dominio>`), com login próprio e autenticação em dois fatores.
+Rota separada (`admin.nascidosparaempreender.com.br`), com login próprio e autenticação em dois fatores.
 
 - **Visão geral**: MRR, novos clientes, testes ativos, conversão teste→pago, churn,
   inadimplência, receita do mês.
@@ -97,7 +102,7 @@ Rota separada (`admin.<dominio>`), com login próprio e autenticação em dois f
 |---|---|---|---|
 | 0 | Deploy atual funcionando + piloto manual | Conta Asaas, páginas de pagamento manuais | Corrigir deploy, LP simples com link de pagamento |
 | 1 | Multi-inquilino + isolamento | Domínio da plataforma na Cloudflare | `tenant_id`, resolução por host, testes de isolamento |
-| 2 | Teste de 24h + ativação | Conta de e-mail transacional (ex.: Resend), EvoAPI | Cadastro, link de ativação, assistente de marca |
+| 2 | Teste de 24h + ativação | Conta de e-mail transacional (Resend), EvoAPI | Cadastro, link de ativação, assistente de marca |
 | 3 | Assinatura Asaas | Chave API sandbox e produção | Checkout, webhooks, inadimplência, upgrade/downgrade |
 | 4 | Super Admin | Validar telas | Painel completo da seção 4 |
 | 5 | Nota fiscal Conta Azul | Credenciais API Conta Azul, dados fiscais | Emissão automática e conciliação |
@@ -105,15 +110,13 @@ Rota separada (`admin.<dominio>`), com login próprio e autenticação em dois f
 | 7 | LP + rastreamento | Pixels Meta/Google, roteiros dos vídeos | LP, eventos de conversão, UTMs |
 | 8 | Piloto e lançamento | 3–5 clientes reais, revisão jurídica | Ajustes, monitoramento, runbook |
 
-## 7. Pendências para você decidir
+## 7. Pendências
 
-1. Preço de cada plano (sugestão de mercado: R$ 79 / R$ 149 / R$ 297 por mês) e se haverá
-   desconto anual.
-2. Nome da plataforma e domínio principal (ex.: `minhaplataforma.com.br`).
-3. Provedor de e-mail transacional (sugestão: Resend ou Brevo).
-4. CNPJ, razão social, endereço e e-mail do encarregado (DPO) para preencher os documentos
-   legais.
-5. O teste de 24h exige validação do WhatsApp (código) para reduzir cadastros falsos?
+1. Nome do encarregado de dados (DPO) — hoje consta apenas o e-mail editoranpe@gmail.com.
+2. Revisão jurídica dos Termos e da Política.
+3. Recomendado: e-mail com domínio próprio (ex.: contato@nascidosparaempreender.com.br) para
+   envio pelo Resend e para o DPO.
+4. Confirmar se o domínio `nascidosparaempreender.com.br` já está na Cloudflare.
 
 ## 8. Documentos legais
 
