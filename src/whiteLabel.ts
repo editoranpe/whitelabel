@@ -14,7 +14,7 @@ export const NPE_THEME = {
   yellow: '#ffd100',
   ink: '#242542',
   background: '#f8f7fc',
-  logo: '/assets/npe-brand.svg',
+  logo: '/assets/npe-logo.webp',
 } as const;
 
 export const whiteLabelDemoPage:CibPage = {
@@ -24,7 +24,7 @@ export const whiteLabelDemoPage:CibPage = {
   accentColor:'#ffd100',
   brandName:'Editora NPE',
   brandSubtitle:'PLATAFORMAS PERSONALIZÁVEIS',
-  logoImage:'/assets/npe-brand.svg',
+  logoImage:'/assets/npe-logo.webp',
   footerText:'Editora NPE · Plataforma demonstrativa para personalização de clientes',
   privacyTitle:'Privacidade e tratamento de dados',
   privacyText:'MODELO DEMONSTRATIVO: substitua este texto pela política de privacidade da empresa antes de coletar dados reais.\n\nInforme razão social, identidade do controlador, finalidade, base legal, prazo de retenção, compartilhamentos, direitos dos titulares e canal de contato.\n\nEste exemplo não constitui orientação jurídica e não deve ser publicado como política definitiva.',
