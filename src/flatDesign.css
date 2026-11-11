@@ -130,7 +130,7 @@
 .fl-canvas-foot button{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:800;color:#0c6547;border:1px solid #d3e2d5;background:#fff;border-radius:7px;padding:9px 13px}
 /* Public site: a contemporary, genuinely flat visual language. */
 .cib-rendered-site{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#12372b;background:#fff}
-.cib-rendered-site .cib-visual-header{box-shadow:none;backdrop-filter:none;border-bottom:1px solid #ffffff1c;min-height:82px;gap:28px}
+.cib-rendered-site .cib-visual-header{box-shadow:none;backdrop-filter:none;border-bottom:1px solid var(--cib-header-line,#ffffff1c);min-height:82px;gap:28px}
 .cib-rendered-site .cib-visual-logo{gap:12px;min-width:0}
 .cib-rendered-site .cib-visual-logo img{background:transparent;border-radius:0;width:54px;height:54px;object-fit:contain}
 .cib-simple-logo{height:45px;width:45px;display:grid;place-items:center;background:var(--cib-accent);color:#0b4a3b;border-radius:11px;font-size:29px;flex:0 0 45px}

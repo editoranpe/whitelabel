@@ -14,6 +14,14 @@ export type CibWidget = {
 };
 export type CibSection = {id:string;label:string;columns:number;background:string;color:string;padding:number;backgroundImage?:string;widgets:CibWidget[]};
 export type CibMenuItem = {id:string;label:string;href:string};
+/** Header text colors that stay readable on any header color chosen in the editor. */
+function headerInk(color:string):Record<string,string>{
+  const m=/^#?([0-9a-f]{6})$/i.exec(color||'');
+  if(!m)return {};
+  const n=parseInt(m[1],16),lin=(c:number)=>{c/=255;return c<=.03928?c/12.92:((c+.055)/1.055)**2.4};
+  const L=.2126*lin(n>>16&255)+.7152*lin(n>>8&255)+.0722*lin(n&255);
+  return L>.45?{'--cib-header-ink':'#242542','--cib-header-sub':'#d1006f','--cib-header-line':'#24254214'}:{'--cib-header-ink':'#ffffff','--cib-header-sub':'#ffd100','--cib-header-line':'#ffffff1c'};
+}
 export type CibPage = {title:string;font:'sans'|'serif'|'modern';headerColor:string;accentColor:string;sections:CibSection[];menuItems?:CibMenuItem[];logoImage?:string;brandName?:string;brandSubtitle?:string;footerText?:string;privacyTitle?:string;privacyText?:string};
 export const freshId = () => 'cib'+Math.random().toString(36).slice(2,11);
 export const widgetNames:Record<CibWidget['type'],string> = {
@@ -73,7 +81,7 @@ export function CibWidgetView({widget:w,editing=false}:{widget:CibWidget;editing
 }
 export function VisualSite({page,editing=false,selected,select,dragStart,dropAt}:{page:CibPage;editing?:boolean;selected?:string|null;select?:(kind:'section'|'widget',id:string)=>void;dragStart?:(section:string,widget:string)=>void;dropAt?:(section:string,widget:string)=>void}){
  const [menu,setMenu]=useState(false);
- return <div className={`cib-rendered-site cib-font-${page.font}`} style={{'--cib-header':page.headerColor,'--cib-accent':page.accentColor} as React.CSSProperties}>
+ return <div className={`cib-rendered-site cib-font-${page.font}`} style={{'--cib-header':page.headerColor,'--cib-accent':page.accentColor,...headerInk(page.headerColor)} as React.CSSProperties}>
   <header className="cib-visual-header"><a href="/" className="cib-visual-logo" onClick={editing?e=>e.preventDefault():undefined}>{page.logoImage?<img src={page.logoImage} alt="Logotipo da empresa" />:<span className="cib-simple-logo" aria-hidden="true">✳</span>} <strong>{page.brandName||'Sua organização'} <span>{page.brandSubtitle||'PLATAFORMA'}</span></strong></a><button type="button" aria-label={menu?'Fechar menu':'Abrir menu'} className="cib-menu-toggle" onClick={()=>setMenu(!menu)}>{menu?<X/>:<Menu/>}</button><nav className={menu?'open':''}>{(page.menuItems!==undefined?page.menuItems:page.sections.slice(0,5).map(s=>({id:s.id,label:s.label,href:`#${s.id}` }))).map(link=><a key={link.id} href={editing?'#':link.href} onClick={editing?e=>e.preventDefault():()=>setMenu(false)}>{link.label}</a>)}{!editing&&<Link to="/entrar">Área do associado</Link>}</nav></header>
   <main>{page.sections.map(section=><section key={section.id} id={section.id} className={`cib-visual-section ${editing&&selected===section.id?'cib-selected':''}`} style={{background:section.background,color:section.color,padding:`${section.padding}px 22px`,backgroundImage:section.backgroundImage?`linear-gradient(#0005,#0005),url("${section.backgroundImage}")`:undefined,backgroundPosition:'center',backgroundSize:'cover'}}>
    {editing&&<button className="cib-section-handle" onClick={()=>select?.('section',section.id)}><PlusCircle size={14}/> Editar seção: {section.label}</button>}

@@ -20,7 +20,7 @@ export const NPE_THEME = {
 export const whiteLabelDemoPage:CibPage = {
   title:'NPE Plataforma | Um sistema com a identidade da sua empresa',
   font:'modern',
-  headerColor:'#393c86',
+  headerColor:'#ffffff',
   accentColor:'#ffd100',
   brandName:'Editora NPE',
   brandSubtitle:'PLATAFORMAS PERSONALIZÁVEIS',

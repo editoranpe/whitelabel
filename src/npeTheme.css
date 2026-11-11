@@ -10,13 +10,13 @@
 }
 body{background:var(--npe-soft);color:var(--npe-ink)}
 .cib-rendered-site{--cib-header:#393c86;--cib-accent:#ffd100;background:#fff;color:#242542}
-.cib-rendered-site .cib-visual-header{background:var(--cib-header);min-height:96px;padding:12px max(22px,calc((100vw - 1220px)/2))}
+.cib-rendered-site .cib-visual-header{background:var(--cib-header);color:var(--cib-header-ink,#fff);border-bottom:1px solid var(--cib-header-line,#ffffff1c);min-height:96px;padding:12px max(22px,calc((100vw - 1220px)/2))}
 .cib-rendered-site .cib-visual-logo{gap:14px}
-.cib-rendered-site .cib-visual-logo img{width:114px;height:68px;max-width:114px;object-fit:contain;border-radius:5px;background:#fff;padding:2px}
+.cib-rendered-site .cib-visual-logo img{width:132px;height:76px;max-width:132px;object-fit:contain;border-radius:0;background:transparent;padding:0}
 .cib-rendered-site .cib-visual-logo strong{font-size:18px;letter-spacing:-.035em}
-.cib-rendered-site .cib-visual-logo strong span{font-size:10px;letter-spacing:.115em;color:var(--npe-yellow)}
-.cib-rendered-site .cib-visual-header nav a{color:#fff}
-.cib-rendered-site .cib-visual-header nav a:hover{color:var(--npe-yellow)}
+.cib-rendered-site .cib-visual-logo strong span{font-size:10px;letter-spacing:.115em;color:var(--cib-header-sub,var(--npe-yellow))}
+.cib-rendered-site .cib-visual-header nav a{color:var(--cib-header-ink,#fff)}
+.cib-rendered-site .cib-visual-header nav a:hover{color:var(--cib-header-sub,var(--npe-yellow))}
 .cib-rendered-site .cib-widget-heading h1{font-size:clamp(34px,4.5vw,62px);line-height:1.1;font-weight:850;letter-spacing:-.055em}
 .cib-rendered-site .cib-widget-heading p{font-size:clamp(17px,1.6vw,21px);line-height:1.7;color:inherit}
 .cib-rendered-site .cib-widget-button{background:var(--npe-magenta);color:#fff;border-radius:10px;min-height:52px}
@@ -70,3 +70,4 @@ body{background:var(--npe-soft);color:var(--npe-ink)}
  .cib-rendered-site .cib-visual-logo strong span{font-size:9px}
  .cib-rendered-site .cib-visual-section{padding:54px 18px!important}
 }
+.cib-rendered-site .cib-visual-logo{color:var(--cib-header-ink,#fff)}
